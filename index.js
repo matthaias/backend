@@ -9,7 +9,14 @@ app.use(bodyParser.json());
 app.use(cors());
 
 var mongoose = require('mongoose');
-mongoose.connect(`mongodb://mongo-dev-1,mongo-dev-2,mongo-dev-3/test?replicaSet=rs0`);
+mongoose.connect(
+    `mongodb://mongo-dev-1,mongo-dev-2,mongo-dev-3/test?replicaSet=rs0`,
+    {
+        db: {
+            readPreference: 'secondaryPreferred'
+        }
+    }
+);
 
 var Url = mongoose.model('url', { url: String, image: String });
 
