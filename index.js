@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 var mongoose = require('mongoose');
-mongoose.connect(`mongodb://mongo/test`);
+mongoose.connect(`mongodb://mongo-1,mongo-2,mongo-3:27017/test`);
 
 var Url = mongoose.model('url', { url: String, image: String });
 
